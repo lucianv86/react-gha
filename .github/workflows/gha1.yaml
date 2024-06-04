@@ -1,22 +1,27 @@
 name: React App Deployment
+
 on:
     push:
         branches: main
+
 jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [10.x, 12.x, 14.x]
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+    react-app-deployment:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Clone repository
+          uses: actions/checkout@v4
+        - name: Use Node.js 18.x
+          uses: actions/setup-node@v4
+          with:
+            node-version: 18.x
+        - name: Install dependencies
+          run: npm install
+        - name: Test
+          run: npm test
+        - name: Generate build
+          run: npm build
+        - name: Generate artifact
+          uses: actions/upload-artifact@v4
+          with:
+            name: react-app-deployment
+            path: build
