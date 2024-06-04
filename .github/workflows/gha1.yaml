@@ -9,9 +9,9 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Clone repository
-              uses: actions/checkout@v2
+              uses: actions/checkout@v4
             - name: Use Node.js 18.x
-              uses: actions/setup-node@v1
+              uses: actions/setup-node@v4
               with:
                 node-version: 18.x
             - name: Install dependencies
@@ -21,7 +21,7 @@ jobs:
             - name: Generate build
               uses: npm build
             - name: Generate artifact
-              uses: actions/upload-artifact@v1
+              uses: actions/upload-artifact@v4
               with:
                 name: react-app-deployment
                 path: build
