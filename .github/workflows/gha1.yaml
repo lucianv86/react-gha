@@ -19,8 +19,8 @@ jobs:
               uses: npm test
             - name: Generate build
               uses: npm build
-            - name: Generate artifact
-              uses: actions/upload-artifact@v4
-              with:
-                name: react-app-deployment
-                path: build
+            # - name: Generate artifact
+            #   uses: actions/upload-artifact@v4
+            #   with:
+            #     name: react-app-deployment
+            #     path: build
