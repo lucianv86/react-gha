@@ -22,6 +22,6 @@ jobs:
               uses: npm build
             - name: Generate artifact
               uses: actions/upload-artifact@v1
-              with: 
+              with:
                 name: react-app-deployment
                 path: build
